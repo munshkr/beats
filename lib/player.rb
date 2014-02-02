@@ -144,6 +144,8 @@ class Player
 
   def method_missing(method, *args, &block)
     mpd.send(method, *args, &block)
+  rescue MPD::SystemError => err
+    puts err
   end
 
   def state
